@@ -15,8 +15,7 @@ def write_to_excel(filename, sheetnum, datalist):
     wb = openpyxl.load_workbook(filename)
     wsList = wb.get_sheet_names()
     ws = wb[wsList[sheetnum]]
-    for row in datalist:
-        ws.append(row)
+    for i in range(len(datalist)):
+        for j in range(5):
+            ws.cell(row=i + 2, column=j + 21).value = datalist[i][j]
     wb.save(filename)
-
-write_to_excel('KBO_타자.xlsx', 0, crawling.get_datalist('a'))

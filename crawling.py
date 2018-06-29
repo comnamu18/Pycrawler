@@ -1,3 +1,4 @@
+#-*-coding:utf-8-*-
 """
 Dataset Source = KBReport.com
 Just for private study
@@ -15,10 +16,8 @@ right = "우타"
 both = "양타"
 
 def get_datalist(url):
-    URL = "http://www.kbreport.com/player/detail/317"
+    URL = "http://www.kbreport.com/player/detail/1501"
     datalist = parse_html(get_html(URL))
-    for index in datalist:
-        print(index)
     return datalist
 
 def get_html(url):
@@ -56,13 +55,13 @@ def position_change(position):
 
 def money_change(payment, money_type):
     ret = ""
-    if payment is not None:
+    if payment is not '':
         if "￦" in payment:
             payment = payment.split("￦")[1]
             payment = ''.join(a for a in payment if a not in ',')
             ret = payment[:-4]
         else:
-            payment = payment.split("$")[1]
+            payment = payment.split('＄')[1]
             payment = ''.join(a for a in payment if a not in ',')
             ret = payment[:-1]
     return ret
